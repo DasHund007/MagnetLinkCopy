@@ -10,6 +10,9 @@ def check_clipboard():
     previous_clipboard = ""
     link_count = 0
 
+    with open(output_file, 'w') as f:
+        f.truncate(0)
+
     while True:
         try:
             current_clipboard = pyperclip.paste()
