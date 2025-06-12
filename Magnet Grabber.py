@@ -18,6 +18,13 @@ def check_clipboard():
             time.sleep(0.5)
         except KeyboardInterrupt:
             print(Fore.YELLOW + "\nClipboard monitoring stopped.")
+            try:
+                with open(output_file, 'r') as f:
+                    all_links = f.read().strip()
+                pyperclip.copy(all_links)
+                print(Fore.CYAN + "All links copied to clipboard.")
+            except Exception as e:
+                print(Fore.RED + f"Error copying to clipboard: {e}")
             break
 
 if __name__ == "__main__":
